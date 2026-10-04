@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bicho Burger - Enlaces & Menú</title>
+  <meta name="description" content="Menú digital, Instagram y pedidos de Bicho Burger.">
+  <!-- Fuente e Iconos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-dark: #000000;
+      --card-bg: #121212;
+      --card-border: #222222;
+      --white: #ffffff;
+      --accent: #e50914; /* Rojo toque diablo */
+      --text-gray: #a1a1aa;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--white);
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Logo circular fiel al arte original */
+    .logo-container {
+      width: 135px;
+      height: 135px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      background: #000;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border: 3px solid #ffffff;
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .brand-title {
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .brand-tagline {
+      font-size: 0.85rem;
+      color: var(--text-gray);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    /* Contenedor de Botones Centrales */
+    .buttons-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--white);
+      background-color: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      transition: all 0.25s ease-in-out;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 255, 255, 0.08);
+      border-color: #555;
+    }
+
+    .btn-menu {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+    .btn-menu:hover {
+      background: #e4e4e7;
+    }
+
+    .btn-instagram:hover {
+      border-color: #E1306C;
+      color: #E1306C;
+    }
+
+    .btn-whatsapp:hover {
+      border-color: #25D366;
+      color: #25D366;
+    }
+
+    /* Sección de Menú */
+    .menu-section {
+      width: 100%;
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 10px;
+    }
+
+    .menu-header h2 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .menu-items-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .menu-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      display: flex;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .menu-card img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background-color: #1f1f1f;
+    }
+
+    .menu-card-details {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .menu-card-title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .menu-card-desc {
+      font-size: 0.75rem;
+      color: var(--text-gray);
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .menu-card-price {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: var(--white);
+    }
+
+    /* Footer discreto */
+    .footer {
+      margin-top: 40px;
+      font-size: 0.75rem;
+      color: #52525b;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Logotipo oficial -->
+    <div class="logo-container">
+      <img src="logo.png" alt="Logotipo Bicho Burger">
+    </div>
+
+    <h1 class="brand-title">Bicho Burger</h1>
+    <p class="brand-tagline">Smash Burgers & Snacks</p>
+
+    <!-- Los 3 Botones Centrales -->
+    <div class="buttons-group">
+      <!-- Botón 1: Menú (Muestra el catálogo interactivo abajo) -->
+      <button class="btn btn-menu" onclick="toggleMenu()">
+        <i class="fa-solid fa-burger"></i>
+        <span>Ver Menú Digital</span>
+      </button>
+
+      <!-- Botón 2: Instagram (Alimentado por Sheets) -->
+      <a id="btnInstagram" href="#" target="_blank" class="btn btn-instagram">
+        <i class="fa-brands fa-instagram"></i>
+        <span>Instagram</span>
+      </a>
+
+      <!-- Botón 3: WhatsApp (Alimentado por Sheets) -->
+      <a id="btnWhatsapp" href="#" target="_blank" class="btn btn-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>Pedir por WhatsApp</span>
+      </a>
+    </div>
+
+    <!-- Contenedor del Menú alimentado por Sheets -->
+    <section id="menuSection" class="menu-section">
+      <div class="menu-header">
+        <h2>Nuestra Carta</h2>
+        <span id="loadingNotice" style="font-size:0.75rem; color:var(--text-gray);">Cargando productos...</span>
+      </div>
+
+      <div id="menuGrid" class="menu-items-grid">
+        <!-- Tarjetas dinámicas inyectadas vía JS -->
+      </div>
+    </section>
+
+    <div class="footer">
+      Powered by Bicho Burger © 2026
+    </div>
+  </div>
+
+  <script>
+    /* ========================================================
+       CONFIGURACIÓN DE GOOGLE SHEETS
+       1. Publica tu hoja en Archivo > Compartir > Publicar en la Web.
+       2. Elige formato CSV y pega la URL aquí:
+       ======================================================== */
+    const GOOGLE_SHEETS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-REEMPLAZA_CON_TU_ID_AQUI/pub?output=csv";
+
+    // Valores por defecto (mientras se conecta al Sheets o respaldo offline)
+    const defaults = {
+      instagram: "https://instagram.com/bichoburger",
+      whatsappNumber: "5213312345678",
+      whatsappMessage: "¡Hola Bicho Burger! Quiero hacer un pedido."
+    };
+
+    // Función para procesar y limpiar CSV a Array de Objetos
+    function parseCSV(text) {
+      const lines = text.trim().split("\n");
+      const headers = lines[0].split(",").map(h => h.trim().toLowerCase());
+      
+      return lines.slice(1).map(line => {
+        // Regex para respetar comas dentro de comillas
+        const values = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/).map(v => v.replace(/^"\vert{}"$/g, '').trim());
+        const entry = {};
+        headers.forEach((header, index) => {
+          entry[header] = values[index] || "";
+        });
+        return entry;
+      });
+    }
+
+    // Cargar datos dinámicos desde Google Sheets
+    async function loadDataFromSheet() {
+      try {
+        const response = await fetch(GOOGLE_SHEETS_CSV_URL);
+        if (!response.ok) throw new Error("No se pudo conectar con Sheets");
+        const csvText = await response.text();
+        const data = parseCSV(csvText);
+
+        renderMenuItems(data);
+      } catch (error) {
+        console.warn("Utilizando datos de demostración o fallo al leer Sheets:", error);
+        // Respaldo de demostración funcional
+        renderMenuItems([
+          {
+            nombre: "Bicho Clásica",
+            descripcion: "150g de res smash, queso cheddar americano, pepinillos y salsa de la casa.",
+            costo: "$130",
+            imagen: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400"
+          },
+          {
+            nombre: "Bicho Diablo Doble",
+            descripcion: "Doble carne, tocino crujiente, cebolla caramelizada y salsa picante.",
+            costo: "$175",
+            imagen: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400"
+          },
+          {
+            nombre: "Papas Sazonadas",
+            descripcion: "Porción individual con queso cheddar derretido y paprika.",
+            costo: "$75",
+            imagen: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400"
+          }
+        ]);
+      }
+    }
+
+    // Renderizar productos en pantalla
+    function renderMenuItems(items) {
+      const grid = document.getElementById("menuGrid");
+      const notice = document.getElementById("loadingNotice");
+      if (notice) notice.style.display = "none";
+      grid.innerHTML = "";
+
+      items.forEach(item => {
+        if (!item.nombre) return;
+        const card = document.createElement("div");
+        card.className = "menu-card";
+        card.innerHTML = `
+          <img src="${item.imagen || 'https://via.placeholder.com/150x150/111/fff?text=Burger'}" alt="${item.nombre}" loading="lazy">
+          <div class="menu-card-details">
+            <div>
+              <div class="menu-card-title">${item.nombre}</div>
+              <div class="menu-card-desc">${item.descripcion || ''}</div>
+            </div>
+            <div class="menu-card-price">${item.costo || ''}</div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Configurar enlaces de redes
+    function setupSocialLinks(igUrl, waNum, waMsg) {
+      const igBtn = document.getElementById("btnInstagram");
+      const waBtn = document.getElementById("btnWhatsapp");
+
+      igBtn.href = igUrl || defaults.instagram;
+      const cleanWaNum = (waNum || defaults.whatsappNumber).replace(/[^0-9]/g, '');
+      const encodedMsg = encodeURIComponent(waMsg || defaults.whatsappMessage);
+      waBtn.href = `https://wa.me/${cleanWaNum}?text=${encodedMsg}`;
+    }
+
+    // Mostrar / Ocultar menú al presionar el botón 1
+    function toggleMenu() {
+      const menu = document.getElementById("menuSection");
+      const isVisible = menu.style.display === "block";
+      menu.style.display = isVisible ? "none" : "block";
+      
+      if (!isVisible) {
+        menu.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Inicializar al cargar
+    document.addEventListener("DOMContentLoaded", () => {
+      setupSocialLinks(defaults.instagram, defaults.whatsappNumber, defaults.whatsappMessage);
+      loadDataFromSheet();
+    });
+  </script>
+</body>
+</html>
